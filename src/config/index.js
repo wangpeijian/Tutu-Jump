@@ -1,0 +1,3 @@
+//全局配置
+var SCREEN_WIDTH = 800;
+var SCREEN_HEIGHT = 600;

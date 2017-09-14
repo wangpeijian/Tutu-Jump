@@ -1,4 +1,15 @@
 D .
+R C1F18B5B .rec
+R DAE53B3 fly.atlas
+R E494C142 fly.png
+R 1C324635 run.atlas
+R 88E5AB26 run.png
+R B1493B39 stand.atlas
+R 8D538BC9 stand.png
+D background
+R 1693692C background.png
+D floor
+R 166E9756 floor.png
 D fly
 P 8A79B664 fly_01.png
 P 1E1F6580 fly_02.png
@@ -9,3 +20,5 @@ P 67C61CF7 run_01.png
 P 513F54F6 run_02.png
 P BA73B53B run_03.png
 P 6AB37E5C run_04.png
+D stand
+P 67C61CF7 stand_01.png

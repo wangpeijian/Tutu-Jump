@@ -1,0 +1,92 @@
+{
+    "frames": {
+        "fly_01.png": {
+            "frame": {
+                "h": 61,
+                "idx": 0,
+                "w": 53,
+                "x": 0,
+                "y": 0
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 96,
+                "w": 96
+            },
+            "spriteSourceSize": {
+                "h": 61,
+                "w": 53,
+                "x": 22,
+                "y": 16
+            },
+            "trimmed": true
+        },
+        "fly_02.png": {
+            "frame": {
+                "h": 61,
+                "idx": 0,
+                "w": 52,
+                "x": 0,
+                "y": 62
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 96,
+                "w": 96
+            },
+            "spriteSourceSize": {
+                "h": 61,
+                "w": 52,
+                "x": 23,
+                "y": 16
+            },
+            "trimmed": true
+        },
+        "fly_03.png": {
+            "frame": {
+                "h": 60,
+                "idx": 0,
+                "w": 54,
+                "x": 53,
+                "y": 62
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 96,
+                "w": 96
+            },
+            "spriteSourceSize": {
+                "h": 60,
+                "w": 54,
+                "x": 21,
+                "y": 17
+            },
+            "trimmed": true
+        },
+        "fly_04.png": {
+            "frame": {
+                "h": 61,
+                "idx": 0,
+                "w": 54,
+                "x": 54,
+                "y": 0
+            },
+            "rotated": false,
+            "sourceSize": {
+                "h": 96,
+                "w": 96
+            },
+            "spriteSourceSize": {
+                "h": 61,
+                "w": 54,
+                "x": 21,
+                "y": 16
+            },
+            "trimmed": true
+        }
+    },
+    "meta": {
+        "image": "fly.png",
+        "prefix": "fly/"
+    }
+}
