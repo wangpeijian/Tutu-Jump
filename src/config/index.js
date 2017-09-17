@@ -67,3 +67,33 @@ var TUTU_JUMP_INIT_SPEED = 10;
 var TUTU_FLY_INIT_SPEED = 10;
 //tutu重力加速度
 var TUTU_FALL_G = -0.25;
+
+/** ------------------------------页面资源配置----------------------------------------- */
+//按钮皮肤
+var BUTTON_SKIN = './res/ui/button_skin.png';
+var BUTTON_WIDTH = 140;
+var BUTTON_HEIGHT = 60;
+var BUTTON_FONT_SIZE = 26;
+var BUTTON_FONT_COLOR = '#F9DD69';
+var BUTTON_FONT_COLOR_ACTIVE = '#FFFFFF';
+
+//输入框皮肤
+var INPUT_SKIN = './res/ui/input_skin.png';
+var INPUT_WIDTH = 190;
+var INPUT_HEIGHT = 60;
+var INPUT_FONT_SIZE = 22;
+var INPUT_FONT_COLOR = '#089FEA';
+var INPUT_PROMPT_COLOR = '#089FEA';
+
+//表单下边距
+var FORM_MARGIN_BOTTOM = 10;
+
+
+//封面页
+var COVER_PAGE_BACKGROUND = './res/pages/cover_page_background.jpg';
+
+//表单页
+var FORM_PAGE_BACKGROUND = './res/pages/form_page_background.jpg';
+
+//说明页
+var EXPLAIN_PAGE_BACKGROUND = './res/pages/explain_page_background.jpg';
