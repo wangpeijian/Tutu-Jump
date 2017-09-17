@@ -24,12 +24,12 @@
             //添加到舞台
             Laya.stage.addChild(this.second);
 
-            this.loop();
+            //this.loop();
         }
 
-        _proto.loop = function (){
-           Laya.timer.frameLoop(GAME_FRAME, this, this._move);
-        }
+        // _proto.loop = function (){
+        //    Laya.timer.frameLoop(GAME_FRAME, this, this._move);
+        // }
 
         _proto._move = function(){
             this.first.y += this.speed
