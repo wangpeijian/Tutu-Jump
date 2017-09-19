@@ -50,7 +50,8 @@
             x = (SCREEN_WIDTH - BUTTON_WIDTH) / 2;
             $helper.createButton(BUTTON_SKIN_NEXT, x, y, function (obj) {
                 console.log(company.text, name.text, mobile.text);
-                $helper.destroy([img, obj, company, name, mobile]);
+                //$helper.destroy([img, obj, company, name, mobile]);
+                Laya.stage.removeChildren();
                 nextPage();
             })
 

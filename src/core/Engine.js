@@ -10,8 +10,8 @@
         this.scorePanel = null;
         // this.scoreBar = null;
         // this.score = 0;
-         this.startButton = null;
-         this.moon = null;
+        this.startButton = null;
+        this.moon = null;
 
         this.gameOver = false;
 
@@ -32,14 +32,14 @@
             this.background = new Background();
 
             //-----------------创建月亮和母兔子-----------------
-            this.moon = new Moon(); 
+            this.moon = new Moon();
             //----------------------------------
 
             //创建随机云彩
             for (var i = 0; i < CLOUD_NUMBER; i++) {
                 var coordinateX = Math.random() * (SCREEN_WIDTH - CLOUD_WIDTH);
 
-                //游戏开始时少展示一个云彩
+                //游戏开始时少展示两个云彩
                 var coordinateY = ((SCREEN_HEIGHT - CLOUD_HEIGHT * (CLOUD_NUMBER - 1)) / (CLOUD_NUMBER - 1) + CLOUD_HEIGHT) * (i - 2);
 
                 var cloud = new Cloud(coordinateX, coordinateY);
@@ -66,7 +66,6 @@
         //开始动画
         _proto._move = function () {
             if (this.gameOver) {
-                //location.reload();
                 return;
             }
 
@@ -75,12 +74,15 @@
             this.tutu._move();
             this.lantern._move();
             this.radish._move();
+            this.scorePanel._move();
+
             for (var i = 0; i < CLOUD_NUMBER; i++) {
                 this.cloudList[i]._move();
             }
 
             //判断游戏是否结束
-             var tutu = this.tutu
+            var tutu = this.tutu;
+            var scorePanel = this.scorePanel;
             if (tutu.self.y > SCREEN_HEIGHT) {
                 //游戏结束
                 this.gameOver = true;
@@ -89,9 +91,15 @@
 
             //展示得分
             var score = tutu.distance * GAME_SCORE_RATIO;
-            this.scorePanel.score = parseInt(this.score);
-            //this.scoreBar.text = 
-                
+            this.scorePanel.score = parseInt(score);
+
+            this.radish.IsCollision(x, y, function () {
+                //如果升过3级则兔子变胖                
+                if(scorePanel.upgrade()){
+                    //tutu.fat();
+                }
+            })
+
 
             //开始判断物体间是否发生了碰撞
             var x = tutu.self.x + TUTU_WIDTH / 2;

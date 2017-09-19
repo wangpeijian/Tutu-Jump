@@ -10,7 +10,7 @@ var FONT_FAMILY = 'BitMicro01';
 //游戏动画帧
 var GAME_FRAME = 1;
 //游戏速度
-var GAME_SPEED = 4;
+var GAME_SPEED = 2;
 //游戏得分系数
 var GAME_SCORE_RATIO = 10;
 
@@ -43,7 +43,7 @@ var LANTERN_ANI = './lanmpUp.ani';
 var LANTERN_WIDTH = 70;
 var LANTERN_HEIGHT = 70;
 //灯笼出现的几率
-var LANTERN_CHANCE = 0.9;
+var LANTERN_CHANCE = 1;
 
 //萝卜配置
 var RADISH_SPEED = GAME_SPEED;
@@ -53,7 +53,7 @@ var RADISH_IMAGE = '../laya/assets/radish/radish.png';
 var RADISH_WIDTH = 30;
 var RADISH_HEIGHT = 30;
 //萝卜出现的几率
-var RADISH_CHANCE = 0.9;
+var RADISH_CHANCE = 1;
 
 //tutu配置
 var TUTU_JUMP_ATLAS = './res/atlas/fly.atlas';
@@ -130,4 +130,4 @@ var STATUS_FAT = '../laya/assets/score/fat.png'
 var STATUS_FAT_WIDTH = 15;
 var STATUS_FAT_HEIGHT = 20;
 //面板状态间距
-var STATUS_PADDING = 5;
+var STATUS_PADDING = 10;

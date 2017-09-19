@@ -13,7 +13,8 @@
             Laya.stage.addChild(img);
             
             img.on(laya.events.Event.CLICK, window, function () {
-                $helper.destroy([img]);
+                //$helper.destroy([img]);
+                Laya.stage.removeChildren();
                 nextPage();
             });
         }

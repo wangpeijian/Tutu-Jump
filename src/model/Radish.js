@@ -40,6 +40,16 @@
             this.self.y = (Math.random() + 1) * (- SCREEN_HEIGHT / RADISH_CHANCE);
         }
 
+        //判断物体是否碰撞
+        _proto.IsCollision = function(x, y, cb){
+            // 判断横坐标在不在范围内
+            if(this.self.x + RADISH_WIDTH >= x && this.self.x <= x + TUTU_WIDTH){
+                if(this.self.y + RADISH_HEIGHT >= y && this.self.y <= y + TUTU_HEIGHT){
+                    cb(this.self.x, this.self.y);
+                }
+            }
+        }
+
         this.init();
     }
 
