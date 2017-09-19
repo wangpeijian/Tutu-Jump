@@ -13,18 +13,13 @@
             this.setPosition();
 
             //添加到舞台
-            Laya.stage.addChild(this.self);
-
-            //this.loop();
+            Laya.stage.addChild(this.self);      
         }
 
-        // _proto.loop = function () {
-        //     Laya.timer.frameLoop(GAME_FRAME, this, this._move);
-        // }
 
         _proto._move = function () {
-            //云彩只能向下移动
-            this.self.y += LANTERN_SPEED;
+            //灯笼向上移动
+            this.self.y -= LANTERN_SPEED;
             
             //每一个整屏高度的倍数计算一次
             if (this.self.y > SCREEN_HEIGHT && this.self.y % SCREEN_HEIGHT === 0) {

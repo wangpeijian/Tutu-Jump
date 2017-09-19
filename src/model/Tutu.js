@@ -7,6 +7,8 @@
         this._STATUS_FLY = "fly";
         this._STATUS_FALL = "fall";
 
+        this._isFat = false;
+
         //处在跳跃状态
         this.jumping = false;
         //处在飞行状态

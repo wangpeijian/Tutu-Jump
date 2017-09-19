@@ -7,9 +7,11 @@
         this.background = null;
         this.lantern = null;
         this.tutu = null;
-        this.scoreBar = null;
-        this.score = 0;
-        this.startButton = null;
+        this.scorePanel = null;
+        // this.scoreBar = null;
+        // this.score = 0;
+         this.startButton = null;
+         this.moon = null;
 
         this.gameOver = false;
 
@@ -21,40 +23,17 @@
         //初始化游戏场景
         _proto.init = function () {
             var _this = this;
-            this.score = 0;
-            //注册页面中使用的字体
-            $helper.createFontFamily(function () {
-                //初始化得分面板
-                var scoreBar = new laya.display.Text();
-                scoreBar.x = 30;
-                scoreBar.y = 10;
-                scoreBar.text = _this.score + "M";
-                scoreBar.color = BUTTON_FONT_COLOR;
-                scoreBar.align = "center";
-                scoreBar.font = FONT_FAMILY;
-                scoreBar.fontSize = 50;
-                Laya.stage.addChild(scoreBar);
-                _this.scoreBar = scoreBar;
-            })
-            // var mBitmapFont = new laya.display.BitmapFont();
-            // mBitmapFont.loadFont(FONT_SOURCE, new laya.utils.Handler(this, function () {
-            //     mBitmapFont.setSpaceWidth(10);
-            //     laya.display.Text.registerBitmapFont(FONT_FAMILY, mBitmapFont);
-            //      //初始化得分面板
-            //     var scoreBar = new laya.display.Text();
-            //     scoreBar.x = 30;
-            //     scoreBar.y = 10;
-            //     scoreBar.text = this.score + "M";
-            //     scoreBar.align = "center";
-            //     scoreBar.font = FONT_FAMILY;
-            //     scoreBar.fontSize = 50;
-            //     Laya.stage.addChild(scoreBar);
-            //     this.scoreBar = scoreBar;
-            // }));
 
+            // -----------------积分部分-----------------
+            this.scorePanel = new ScorePanel();
+            // ----------------------------------
 
             //初始化背景
             this.background = new Background();
+
+            //-----------------创建月亮和母兔子-----------------
+            this.moon = new Moon(); 
+            //----------------------------------
 
             //创建随机云彩
             for (var i = 0; i < CLOUD_NUMBER; i++) {
@@ -74,9 +53,10 @@
             //创建tutu
             this.tutu = new Tutu();
 
+            //创建开始按钮
             var x = (SCREEN_WIDTH - BUTTON_WIDTH) / 2;
             var y = SCREEN_HEIGHT * 0.85; //this.tutu.self.y + TUTU_HEIGHT + FORM_MARGIN_BOTTOM * 6;
-            $helper.createButton("START", x, y, function (obj) {
+            $helper.createButton(BUTTON_SKIN_START, x, y, function (obj) {
                 _this.startButton = obj;
                 _this.start();
                 $helper.destroy([_this.startButton]);
@@ -86,6 +66,7 @@
         //开始动画
         _proto._move = function () {
             if (this.gameOver) {
+                //location.reload();
                 return;
             }
 
@@ -99,7 +80,7 @@
             }
 
             //判断游戏是否结束
-            var tutu = this.tutu
+             var tutu = this.tutu
             if (tutu.self.y > SCREEN_HEIGHT) {
                 //游戏结束
                 this.gameOver = true;
@@ -107,9 +88,10 @@
             }
 
             //展示得分
-            this.score = tutu.distance * GAME_SCORE_RATIO;
-            this.scoreBar.text = this.score + "M";
-
+            var score = tutu.distance * GAME_SCORE_RATIO;
+            this.scorePanel.score = parseInt(this.score);
+            //this.scoreBar.text = 
+                
 
             //开始判断物体间是否发生了碰撞
             var x = tutu.self.x + TUTU_WIDTH / 2;

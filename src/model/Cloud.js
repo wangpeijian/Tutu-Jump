@@ -12,7 +12,8 @@
          _proto.init = function (){
             this.self = new Laya.Sprite();
             //加载显示图片，坐标位于
-            this.self.loadImage(CLOUD_IMAGE, 0, 0, CLOUD_WIDTH, CLOUD_HEIGHT);
+            let cloudStyle = Math.random() > 0.5 ? 1 : 0;
+            this.self.loadImage(CLOUD_IMAGE[cloudStyle], 0, 0, CLOUD_WIDTH, CLOUD_HEIGHT);
             //默认隐藏云朵位置
             //this.self.y = -CLOUD_HEIGHT;
             this.self.x = x;

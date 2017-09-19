@@ -7,7 +7,7 @@
         _proto.createInput = function (prompt, x, y, create) {
             var _this = this;
             Laya.loader.load(INPUT_SKIN, Laya.Handler.create(this, function () {
-                _this.createFontFamily(function () {
+                // _this.createFontFamily(function () {
                     var obj = new Laya.TextInput();
                     obj.skin = INPUT_SKIN;
                     obj.size(INPUT_WIDTH, INPUT_HEIGHT);
@@ -27,25 +27,29 @@
                     obj.y = y;
 
                     create(obj)
-                })
+                // })
 
             }));
         }
 
-        _proto.createButton = function (label, x, y, click) {
+        _proto.createButton = function (buttonSkin, x, y, click) {
+            var BUTTON_SKIN = buttonSkin;
+
+            
+
             var _this = this;
             Laya.loader.load(BUTTON_SKIN, Laya.Handler.create(this, function () {
-                _this.createFontFamily(function () {
+                //_this.createFontFamily(function () {
                     var obj = new Laya.Button(BUTTON_SKIN);
                     //设置Button相关属性
                     obj.width = BUTTON_WIDTH;
                     obj.height = BUTTON_HEIGHT;
 
-                    obj.label = label;
+                    //obj.label = label;
 
                     obj.stateNum = 2;
-                    obj.labelSize = BUTTON_FONT_SIZE;
-                    obj.labelColors = [BUTTON_FONT_COLOR, BUTTON_FONT_COLOR_ACTIVE].join(",");
+                    //obj.labelSize = BUTTON_FONT_SIZE;
+                    //obj.labelColors = [BUTTON_FONT_COLOR, BUTTON_FONT_COLOR_ACTIVE].join(",");
                     //obj.labelFont = FONT_FAMILY;
                     Laya.stage.addChild(obj);
                     obj.x = x;
@@ -54,7 +58,7 @@
                     obj.on(laya.events.Event.CLICK, window, function () {
                         click(obj);
                     });
-                })
+                //})
             }));
         }
 

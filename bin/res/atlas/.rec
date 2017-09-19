@@ -1,24 +1,38 @@
 D .
-R D30E9FFB .rec
-R DAE53B3 fly.atlas
-R E494C142 fly.png
-R 1C324635 run.atlas
-R 88E5AB26 run.png
-R B1493B39 stand.atlas
-R 8D538BC9 stand.png
 D background
-R 1693692C background.png
-D floor
-R 166E9756 floor.png
-D fly
-P 8A79B664 fly_01.png
-P 1E1F6580 fly_02.png
-P B3D3F7D5 fly_03.png
-P 264FFB51 fly_04.png
-D run
-P 67C61CF7 run_01.png
-P 513F54F6 run_02.png
-P BA73B53B run_03.png
-P 6AB37E5C run_04.png
-D stand
-P 67C61CF7 stand_01.png
+R 59E90D12 background_01.png
+R 8BA2A997 background_02.png
+R AC751221 background_03.png
+R 7B174EEC background_04.png
+R 2F12B549 background_05.png
+D button
+P 21220B4F button_again.png
+P 85EE60DB button_next.png
+P B33FE9C7 button_start.png
+D cloud
+P 11B43032 cloud_01.png
+P BB06FF6C cloud_02.png
+D input
+P 9331498A frame_01.png
+D lantern
+P 9FAE283D lanmp.png
+D logo
+P 51D6078E logo_01.png
+D moon
+P 41ED3647 love.png
+P B2265C11 moon.png
+D pages
+R D849B70D cover_page_background.jpg
+R 58773442 explain_page_background.png
+R 30268AD1 form_page_background.png
+D rabbit
+P 18A92364 rabbit.png
+P C90CBA43 rabbit_fat.png
+D radish
+P 23DAAFDC radish.png
+D score
+P 19BA4942 fat.png
+P 1D973DAB fat_empty.png
+P 1452A7A0 normal.png
+P 5CB6701E radish_empty.png
+P 4CD3EB1B scoreboard.png

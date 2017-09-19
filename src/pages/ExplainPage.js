@@ -14,7 +14,7 @@
             
             var x = (SCREEN_WIDTH - BUTTON_WIDTH) / 2;
             var y = SCREEN_HEIGHT * 0.85;
-            $helper.createButton("NEXT", x, y, function (obj) {
+            $helper.createButton(BUTTON_SKIN_NEXT, x, y, function (obj) {
                 $helper.destroy([img, obj]);
                 nextPage();
             })
