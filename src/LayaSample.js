@@ -3,6 +3,7 @@
 	var OBJECT_FORM_PAGE = new FormPage();
 	var OBJECT_EXPLAIN_PAGE = new ExplainPage();
 	var OBJECT_ENGINE = new Engine();
+	var RANKING_PAGE = new RankingPage();
 
 	//初始化窗口
 	function initSystem() {
@@ -32,7 +33,19 @@
 		}
 	}
 
+	function complete() {
+		console.log("oncom")
+		RANKING_PAGE.init();
+	}
+
 	initSystem();
-	systenRun();
+	//systenRun();
+	var asset = [];
+	asset.push({
+		url: "background/ranking.png",
+		type: Laya.Loader.IMAGE
+	});
+	Laya.loader.load(asset, laya.utils.Handler.create(this,complete));
+
 
 })()
