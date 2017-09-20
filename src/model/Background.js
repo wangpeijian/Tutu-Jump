@@ -6,7 +6,7 @@
 
         this.first = null;
         this.second = null;
-        this.speed = BACKGROUND_SPEED;
+        this.speed = GAME_SPEED;
         this.backgroundIndex = 0;
 
         _proto.init = function (){

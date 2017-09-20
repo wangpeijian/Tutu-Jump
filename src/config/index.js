@@ -9,15 +9,17 @@ var FONT_FAMILY = 'BitMicro01';
 
 //游戏动画帧
 var GAME_FRAME = 1;
+//游戏初始速度
+var GAME_SPEED_DEFAULT = 2
 //游戏速度
-var GAME_SPEED = 2;
+var GAME_SPEED = GAME_SPEED_DEFAULT;
 //游戏得分系数
 var GAME_SCORE_RATIO = 10;
 
 /** ------------------------------游戏模块配置----------------------------------------- */
 //背景配置
 //速度
-var BACKGROUND_SPEED = GAME_SPEED;
+//var BACKGROUND_SPEED = GAME_SPEED;
 //循环周期
 var BACKGROUND_LOOP_TIME = 1;
 //图片资源
@@ -25,7 +27,7 @@ var BACKGROUND_IMAGES = ['../laya/assets/background/background_01.png', '../laya
 
 //云朵配置
 //速度
-var CLOUD_SPEED = GAME_SPEED;
+//var CLOUD_SPEED = GAME_SPEED;
 //云朵资源
 var CLOUD_IMAGE = ['../laya/assets/cloud/cloud_01.png', '../laya/assets/cloud/cloud_02.png'];
 //云朵尺寸
@@ -35,7 +37,7 @@ var CLOUD_HEIGHT = 50;
 var CLOUD_NUMBER = 4;
 
 //灯笼配置
-var LANTERN_SPEED = GAME_SPEED;
+var LANTERN_SPEED = GAME_SPEED * 2;
 //灯笼资源
 var LANTERN_IMAGE = '../laya/assets/lantern/lanmp.png';
 var LANTERN_ANI = './lanmpUp.ani';
@@ -44,9 +46,13 @@ var LANTERN_WIDTH = 70;
 var LANTERN_HEIGHT = 70;
 //灯笼出现的几率
 var LANTERN_CHANCE = 1;
+//灯笼加速n毫秒
+var LANTERN_FLY_TIME = 10 * 1000;
+//灯笼加速倍数
+var LANTERN_SPEED_RATE = 2;
 
 //萝卜配置
-var RADISH_SPEED = GAME_SPEED;
+//var RADISH_SPEED = GAME_SPEED;
 //萝卜资源
 var RADISH_IMAGE = '../laya/assets/radish/radish.png';
 //萝卜尺寸
@@ -56,18 +62,39 @@ var RADISH_HEIGHT = 30;
 var RADISH_CHANCE = 1;
 
 //tutu配置
-var TUTU_JUMP_ATLAS = './res/atlas/fly.atlas';
-var TUTU_FLY_ATLAS = './res/atlas/stand.atlas';
-var TUTU_FALL_ATLAS = './res/atlas/fly.atlas';
+var TUTU_JUMP_JSON = './res/atlas/rabbit.json';
+var TUTU_JUMP_FAT_JSON = './res/atlas/rabbit_fat.json';
+var TUTU_JUMP_ANI = './rabbitJump.ani';
+var TUTU_JUMP_FAT_ANI = './rabbitFatJump.ani';
+
+// var TUTU_FLY_JSON = '../laya/rabbit/rabbit.png';
+// var TUTU_FLY_FAT_JSON = '../laya/assets/rabbit_fat.png';
+var TUTU_FLY_ANI = './rabbitFly.ani';
+var TUTU_FLY_FAT_ANI = './rabbitFatFly.ani';
+//tutu正常动画执行时间
+var TUTU_ANIMATION_DURING = 500;
+
 //tutu尺寸
 var TUTU_WIDTH = 80;
-var TUTU_HEIGHT = 80;
+var TUTU_HEIGHT = 110;
 //tutu起跳速度
 var TUTU_JUMP_INIT_SPEED = 10;
 //tutu飞行速度
 var TUTU_FLY_INIT_SPEED = 10;
 //tutu重力加速度
 var TUTU_FALL_G = -0.25;
+
+//tutu尺寸
+var TUTU_FAT_WIDTH = 120;
+var TUTU_FAT_HEIGHT = 120;
+//tutu起跳速度
+var TUTU_FAT_JUMP_INIT_SPEED = 10;
+//tutu飞行速度
+var TUTU_FAT_FLY_INIT_SPEED = 10;
+//tutu重力加速度
+var TUTU_FAT_FALL_G = -0.3;
+//tutu移动阻力
+var TUTU_MOVE_FRICTION = 0.8;
 
 //月亮配置
 var MOON = '../laya/assets/moon/moon.png';
@@ -122,7 +149,7 @@ var STATUS_NORMAL = '../laya/assets/score/normal.png'
 var STATUS_NORMAL_WIDTH = 15;
 var STATUS_NORMAL_HEIGHT = 20;
 var STATUS_RADISH_EMPTY = '../laya/assets/score/radish_empty.png'
-var STATUS_RADISH = '../laya/assets/score/radish.png'
+var STATUS_RADISH = '../laya/assets/radish/radish.png'
 var STATUS_RADISH_WIDTH = 15;
 var STATUS_RADISH_HEIGHT = 20;
 var STATUS_FAT_EMPTY = '../laya/assets/score/fat_empty.png'

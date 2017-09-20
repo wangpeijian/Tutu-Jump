@@ -30,7 +30,7 @@
         
         _proto._move = function(){
             //云彩只能向下移动
-            this.self.y += CLOUD_SPEED;
+            this.self.y += GAME_SPEED;
 
             if(this.self.y >= SCREEN_HEIGHT){
                 this.self.y = -(SCREEN_HEIGHT - CLOUD_HEIGHT * (CLOUD_NUMBER - 1)) / (CLOUD_NUMBER - 1) - CLOUD_HEIGHT;
@@ -40,10 +40,12 @@
 
         //判断物体是否碰撞
         _proto.IsCollision = function(x, y, cb){
-            // 判断横坐标在不在范围内
-            if(this.self.x <= x && this.self.x + CLOUD_WIDTH >= x){
-                if(this.self.y <= y && this.self.y + CLOUD_HEIGHT >= y){
-                    cb(this.self.x, this.self.y);
+            if(this.self.y > 0){
+                // 判断横坐标在不在范围内
+                if(this.self.x <= x && this.self.x + CLOUD_WIDTH >= x){
+                    if(this.self.y <= y && this.self.y + CLOUD_HEIGHT >= y){
+                        cb(this.self.x, this.self.y);
+                    }
                 }
             }
         }

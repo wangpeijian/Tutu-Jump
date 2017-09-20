@@ -80,9 +80,13 @@
                 this.cloudList[i]._move();
             }
 
-            //判断游戏是否结束
+            
             var tutu = this.tutu;
             var scorePanel = this.scorePanel;
+            var moon = this.moon;
+            var lantern = this.lantern;
+
+            //判断游戏是否结束
             if (tutu.self.y > SCREEN_HEIGHT) {
                 //游戏结束
                 this.gameOver = true;
@@ -93,18 +97,24 @@
             var score = tutu.distance * GAME_SCORE_RATIO;
             this.scorePanel.score = parseInt(score);
 
-            this.radish.IsCollision(x, y, function () {
+            //开始判断物体间是否发生了碰撞
+            //1.吃萝卜碰撞
+            this.radish.IsCollision(tutu.self.x, tutu.self.y, function () {
                 //如果升过3级则兔子变胖                
                 if(scorePanel.upgrade()){
-                    //tutu.fat();
+                    tutu.fat();
                 }
-            })
 
+                //兔子出桃心
+                //tutu.love();
 
-            //开始判断物体间是否发生了碰撞
+                //母兔子出桃心
+                //moon.love();
+            });
+
+            //2.云彩碰撞
             var x = tutu.self.x + TUTU_WIDTH / 2;
             var y = tutu.self.y + TUTU_HEIGHT * 0.8;
-            //1.云彩碰撞
             for (var i = 0; i < CLOUD_NUMBER; i++) {
                 var cloud = this.cloudList[i];
                 cloud.IsCollision(x, y, function () {
@@ -113,6 +123,21 @@
                     }
                 })
             }
+
+            //3.灯笼碰撞
+            lantern.IsCollision(x, y, function(lanternX, lanternY){
+                //兔子跟随灯笼飞行
+                tutu.fly(lanternX, lanternY);
+                //游戏速度加快
+                GAME_SPEED = LANTERN_SPEED_RATE * LANTERN_SPEED;
+
+                setTimeout(function(){
+                    GAME_SPEED = GAME_SPEED_DEFAULT;
+                    lantern.castOff();
+                    tutu.jump();
+                }, LANTERN_FLY_TIME)
+            })
+
         }
 
         //创建对象时初始化素材

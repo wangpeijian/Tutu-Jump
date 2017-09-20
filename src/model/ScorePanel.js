@@ -6,6 +6,7 @@
         this.self = null;
         this.scoreText = null;
         this.radishList = [];
+        this.fat = null;
 
         this.level = 0;
         this.score = 0;
@@ -45,10 +46,8 @@
             var l_normal = new Laya.Sprite();
             l_normal.loadImage(STATUS_NORMAL, x, y, STATUS_NORMAL_WIDTH, STATUS_NORMAL_HEIGHT);
             scorePanel.addChild(l_normal);
-
             for (var i = 0; i < 3; i++) {
                 var l_radish = new Laya.Sprite();
-                y = 50;
                 if (i === 0) {
                     x += STATUS_NORMAL_WIDTH + STATUS_PADDING;
                 } else {
@@ -65,6 +64,7 @@
             y = 50;
             var l_fat = new Laya.Sprite();
             l_fat.loadImage(STATUS_FAT_EMPTY, x, y, STATUS_FAT_WIDTH, STATUS_FAT_HEIGHT);
+            this.fat = l_fat;
             scorePanel.addChild(l_fat);
 
 
@@ -72,24 +72,35 @@
         }
 
         _proto.upgrade = function(){
-            return ++this.level === 3;
+            ++this.level;
+
+            var x = 40, y = 50;
+            for (var i = 0; i < 3; i++) {
+                if(this.level - i <= 0){
+                    return;
+                }
+
+                if (i === 0) {
+                    x += STATUS_NORMAL_WIDTH + STATUS_PADDING;
+                } else {
+                    x += STATUS_RADISH_WIDTH + STATUS_PADDING;
+                }
+
+                var radish = this.radishList[i];
+                radish.loadImage(STATUS_RADISH, x, y, STATUS_RADISH_WIDTH, STATUS_RADISH_HEIGHT);
+
+                if(i === 2){
+                    x += STATUS_RADISH_WIDTH + STATUS_PADDING;
+                    y = 50;
+                    this.fat.loadImage(STATUS_FAT, x, y, STATUS_FAT_WIDTH, STATUS_FAT_HEIGHT);
+                }
+            }
+
+            return this.level === 3;
         }
 
         _proto._move = function () {
             this.scoreText.text = this.score + "M";
-
-            if(this.level >= 3){
-                return;
-            }
-
-            for (var i = 0; i < 3; i++) {
-                if(i > this.level - 1){
-                    return;
-                }
-
-                var radish = this.radishList[i];
-                radish.loadImage(STATUS_RADISH);
-            }
         }
 
         this.init();
