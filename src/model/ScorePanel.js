@@ -34,10 +34,8 @@
                 scoreText.text = _this.score + "M";
                 scoreText.color = BUTTON_FONT_COLOR;
                 scoreText.align = "center";
-                scoreText.font = FONT_FAMILY;
-                scoreText.fontSize = 50;
+                scoreText.fontSize = 35;
                 _this.scoreText = scoreText;
-                //scorePanel.zOrder = 99;
                 scorePanel.addChild(scoreText);
             });
 

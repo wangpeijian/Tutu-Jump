@@ -6,11 +6,12 @@
 
 	//初始化窗口
 	function initSystem() {
+		Laya.Font.defaultFamily = FONT_FAMILY;
 		Laya.init(SCREEN_WIDTH, SCREEN_HEIGHT, Laya.WebGL);
 		Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
 		Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
 		Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
-		Laya.stage.scaleMode = Laya.Stage.SCREEN_NONE;
+		Laya.stage.scaleMode = Laya.Stage.SCREEN_NONE;	
 	}
 
 	function systenRun() {
@@ -32,7 +33,10 @@
 		}
 	}
 
+
 	initSystem();
 	systenRun();
+
+
 
 })()

@@ -70,7 +70,7 @@
         _proto.fly = function (lanternX, lanternY) {
             //tutu与灯笼居中对齐
             this.self.x = lanternX - (TUTU_WIDTH - LANTERN_WIDTH);
-            this.self.y = lanternY + 10;
+            this.self.y = lanternY + LANTERN_HEIGHT + 20;
 
             this.changeStatus(this._STATUS_FLY);
         }
@@ -117,7 +117,7 @@
 
                     this.self.play(0, false, this._isFat ? this._STATUS_JUMP : this._STATUS_FAT_JUMP);
                     break;
-                    
+
                 case this._STATUS_FALL:
                     this.falling = true;
                     break;
@@ -152,10 +152,6 @@
 
         //控制tutu横向移动
         _proto._transverseMove = function (acceleration, accelerationIncludingGravity, rotationRate, interval) {
-            if(this.flying){
-                return;
-            }
-
             this.self.x += this._isFat ? accelerationIncludingGravity.x * TUTU_MOVE_FRICTION : accelerationIncludingGravity.x;
 
             if (this.self.x 　< 0) {
