@@ -1,7 +1,7 @@
 /** ------------------------------系统配置----------------------------------------- */
 //全局配置
 var SCREEN_WIDTH = 400;
-var SCREEN_HEIGHT = 600;
+var SCREEN_HEIGHT = 710;
 
 //系统字体文件配置
 var FONT_SOURCE = '../laya/font/BitMicro01.fnt';

@@ -35,17 +35,32 @@
 
 	function complete() {
 		console.log("oncom")
-		RANKING_PAGE.init();
+		var text = new Laya.Text();
+		text.fontSize = 40;
+		text.color = "#FF00FF";
+		text.text = "A10";
+		text.font = "BitMicro"		
+		text.pos(600, 600);
+		Laya.stage.addChild(text);
+		Laya.timer.once(500, RANKING_PAGE, RANKING_PAGE.init);
+
 	}
 
 	initSystem();
-	//systenRun();
+	// systenRun();
 	var asset = [];
 	asset.push({
 		url: "background/ranking.png",
 		type: Laya.Loader.IMAGE
 	});
-	Laya.loader.load(asset, laya.utils.Handler.create(this,complete));
+	asset.push({
+		url:"res/atlas/button.json",
+		type:Laya.Loader.ATLAS
+	})
+	asset.push({
+		url: "res/BitMicro01.ttf"
+	})
+	Laya.loader.load(asset, laya.utils.Handler.create(this, complete));
 
 
 })()

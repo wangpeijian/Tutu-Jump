@@ -15,13 +15,14 @@
                 "phone": "18501373793",
                 "score": "110"
             }
-            hr.send('http://192.168.1.126:8090/gamedev/api/over/2/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
+            hr.send('http://ntest.guoanfamily.com/game/api/over/2/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
 
         }
 
-        _proto.init = function (nextPage) {
+        _proto.init = function (nextPage) {            
             ranking = new RankingUI();
             Laya.stage.addChild(ranking);
+            //ranking.myScore.font='BitMicro';
             ranking.myScore.text = '10M';
             this.connect();
         }
@@ -38,12 +39,16 @@
         _proto.onHttpRequestComplete = function (e) {
             console.log("收到数据：" + JSON.stringify(hr.data))           
             var data = [];
-            for (var m = 0; m < 20; m++) {
+            for (var m = 1; m < 4; m++) {
                 data.push({
-                    m_label: "No." + m
+                    m_label: "No. " + m,
+                    m_img:"fly.png",
+                    m_name:"WANG PEIJIAN",
+                    m_score:"65535M"
                 });
             }
             ranking.scoreList.array = data;
+            
         }
     }
 
