@@ -41,7 +41,7 @@
                 name = obj;
             });
             y += INPUT_HEIGHT + FORM_MARGIN_BOTTOM;
-            $helper.createInput("MONILE", x, y, function (obj) {
+            $helper.createInput("MOBILE", x, y, function (obj) {
                 mobile = obj;
             });
             y += INPUT_HEIGHT + FORM_MARGIN_BOTTOM;
