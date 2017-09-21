@@ -18,16 +18,12 @@
             //this.loop();
         }
 
-        // _proto.loop = function () {
-        //     Laya.timer.frameLoop(GAME_FRAME, this, this._move);
-        // }
-
         _proto._move = function () {
             //云彩只能向下移动
-            this.self.y += RADISH_SPEED;
+            this.self.y += GAME_SPEED;
             
             //每一个整屏高度的倍数计算一次
-            if (this.self.y > SCREEN_HEIGHT && this.self.y % SCREEN_HEIGHT === 0) {
+            if (this.self.y > SCREEN_HEIGHT  && this.self.y % SCREEN_HEIGHT < SCREEN_HEIGHT * RADISH_CHANCE) {
                 //下一次是否出现根据 -> 随机数是否在几率之中
                 if (Math.random() < RADISH_CHANCE) {
                     this.setPosition();
@@ -42,10 +38,13 @@
 
         //判断物体是否碰撞
         _proto.IsCollision = function(x, y, cb){
-            // 判断横坐标在不在范围内
-            if(this.self.x + RADISH_WIDTH >= x && this.self.x <= x + TUTU_WIDTH){
-                if(this.self.y + RADISH_HEIGHT >= y && this.self.y <= y + TUTU_HEIGHT){
-                    cb(this.self.x, this.self.y);
+            if(this.self.y > 0){
+                // 判断横坐标在不在范围内
+                if(this.self.x + RADISH_WIDTH >= x && this.self.x <= x + TUTU_WIDTH){
+                    if(this.self.y + RADISH_HEIGHT >= y && this.self.y <= y + TUTU_HEIGHT){
+                        this.setPosition();
+                        cb(this.self.x, this.self.y);
+                    }
                 }
             }
         }

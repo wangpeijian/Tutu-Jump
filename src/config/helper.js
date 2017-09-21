@@ -35,8 +35,6 @@
         _proto.createButton = function (buttonSkin, x, y, click) {
             var BUTTON_SKIN = buttonSkin;
 
-            
-
             var _this = this;
             Laya.loader.load(BUTTON_SKIN, Laya.Handler.create(this, function () {
                 //_this.createFontFamily(function () {
@@ -64,12 +62,12 @@
 
         _proto.createFontFamily = function (cb) {
             //注册页面中使用的字体
-            var mBitmapFont = new laya.display.BitmapFont();
-            mBitmapFont.loadFont(FONT_SOURCE, new laya.utils.Handler(this, function () {
-                mBitmapFont.setSpaceWidth(10);
-                laya.display.Text.registerBitmapFont(FONT_FAMILY, mBitmapFont);
+            // var mBitmapFont = new laya.display.BitmapFont();
+            // mBitmapFont.loadFont(FONT_SOURCE, new laya.utils.Handler(this, function () {
+            //     mBitmapFont.setSpaceWidth(10);
+            //     laya.display.Text.registerBitmapFont(FONT_FAMILY, mBitmapFont);
                 cb();
-            }));
+            // }));
         }
 
         _proto.destroy = function (array) {
