@@ -47,14 +47,14 @@
 	}
 
 	initSystem();
-	// systenRun();
+	//systenRun();
 	var asset = [];
 	asset.push({
 		url: "background/ranking.png",
 		type: Laya.Loader.IMAGE
 	});
 	asset.push({
-		url:"res/atlas/button.json",
+		url: ["res/atlas/button.json","res/atlas/score.json"],
 		type:Laya.Loader.ATLAS
 	})
 	asset.push({
