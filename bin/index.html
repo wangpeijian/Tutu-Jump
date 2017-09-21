@@ -18,7 +18,7 @@
 
 	<style>
 		@font-face {
-			font-family: 'BitMicro01';
+			font-family: 'BitMicro';
 			src: url('./res/font/BitMicro01.ttf') format('truetype');
 		}
 	</style>
@@ -26,6 +26,7 @@
 </head>
 
 <body>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	<!--核心包，封装了显示对象渲染，事件，时间管理，时间轴动画，缓动，消息交互,socket，本地存储，鼠标触摸，声音，加载，颜色滤镜，位图字体等-->
 	<script type="text/javascript" src="libs/laya.core.js"></script>
 	<!--封装了webgl渲染管线，如果使用webgl渲染，可以在初始化时调用Laya.init(1000,800,laya.webgl.WebGL);-->
@@ -47,6 +48,8 @@
 	<!--自定义的js(src文件夹下)文件自动添加到下面jsfile模块标签里面里，js的顺序可以手动修改，修改后保留修改的顺序，新增加的js会默认依次追加到标签里-->
 	<!--删除标签，ide不会自动添加js文件，请谨慎操作-->
 	<!--jsfile--startTag-->
+	<script src="../src/ui/layaUI.max.all.js"></script>
+	<script src="../src/pages/RankingPage.js"></script>
 	<script src="../src/config/index.js"></script>
 	<script src="../src/config/helper.js"></script>
 	<script src="../src/pages/CoverPage.js"></script>
