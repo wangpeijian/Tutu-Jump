@@ -12,8 +12,6 @@
         this.score = 0;
 
         _proto.init = function () {
-            var _this = this;
-
             //初始化数据
             this.fat = null;
             this.level = 0;
@@ -26,20 +24,16 @@
             scorePanel.size(GAME_SCORE_PANEL_WIDTH, GAME_SCORE_PANEL_HEIGHT);
             scorePanel.zOrder = 1;
             this.self = scorePanel;
-
-            //注册页面中使用的字体
-            $helper.createFontFamily(function () {
-                //初始化得分
-                var scoreText = new laya.display.Text();
-                scoreText.x = 40;
-                scoreText.y = 8;
-                scoreText.text = _this.score + "M";
-                scoreText.color = BUTTON_FONT_COLOR;
-                scoreText.align = "center";
-                scoreText.fontSize = 35;
-                _this.scoreText = scoreText;
-                scorePanel.addChild(scoreText);
-            });
+            //初始化得分
+            var scoreText = new laya.display.Text();
+            scoreText.x = 40;
+            scoreText.y = 8;
+            scoreText.text = this.score + "M";
+            scoreText.color = BUTTON_FONT_COLOR;
+            scoreText.align = "center";
+            scoreText.fontSize = 35;
+            this.scoreText = scoreText;
+            scorePanel.addChild(scoreText);
 
             //初始化兔子状态条
             var x = 40, y = 50;
@@ -67,16 +61,15 @@
             this.fat = l_fat;
             scorePanel.addChild(l_fat);
 
-
             Laya.stage.addChild(scorePanel);
         }
 
-        _proto.upgrade = function(){
+        _proto.upgrade = function () {
             ++this.level;
 
             var x = 40, y = 50;
             for (var i = 0; i < 3; i++) {
-                if(this.level - i <= 0){
+                if (this.level - i <= 0) {
                     return;
                 }
 
@@ -89,7 +82,7 @@
                 var radish = this.radishList[i];
                 radish.loadImage(STATUS_RADISH, x, y, STATUS_RADISH_WIDTH, STATUS_RADISH_HEIGHT);
 
-                if(i === 2){
+                if (i === 2) {
                     x += STATUS_RADISH_WIDTH + STATUS_PADDING;
                     y = 50;
                     this.fat.loadImage(STATUS_FAT, x, y, STATUS_FAT_WIDTH, STATUS_FAT_HEIGHT);

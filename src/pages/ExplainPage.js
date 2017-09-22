@@ -11,13 +11,13 @@
             img.size(SCREEN_WIDTH, SCREEN_HEIGHT);
             //添加到舞台
             Laya.stage.addChild(img);
-            
+
             var x = (SCREEN_WIDTH - BUTTON_WIDTH) / 2;
             var y = SCREEN_HEIGHT * 0.85;
             $helper.createButton(BUTTON_SKIN_NEXT, x, y, function (obj) {
                 //$helper.destroy([img, obj]);
                 Laya.stage.removeChildren();
-                Laya.SoundManager.playMusic("./res/sounds/bgmusic.mp3",0);
+                Laya.SoundManager.playMusic(GAME_BGM, 0);
                 nextPage();
             })
         }

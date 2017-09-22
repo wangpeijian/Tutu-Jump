@@ -1,8 +1,7 @@
 {
-    "x":0,
     "type":"View",
-    "selectedBox":8,
-    "selecteID":7,
+    "selectedBox":1,
+    "selecteID":25,
     "props":{"width":400,"visible":true,"sceneColor":"#000000","sceneBg":"laya/views/Ranking.jpg","height":600},
     "nodeParent":-1,
     "label":"View",
@@ -13,7 +12,6 @@
     "compId":1,
     "child":[
         {
-            "x":15,
             "type":"Image",
             "props":{"y":0,"x":0,"skin":"background/ranking.png"},
             "nodeParent":1,
@@ -27,9 +25,8 @@
             "$HIDDEN":false
         },
         {
-            "x":15,
             "type":"Label",
-            "props":{"y":296,"x":244,"width":101,"var":"maxscore","text":"2470M","height":20,"fontSize":22,"font":"BitMicro","color":"#fff8f8","align":"center"},
+            "props":{"y":232,"x":249,"width":101,"var":"maxscore","text":"2470M","height":20,"fontSize":22,"font":"BitMicro","color":"#fff8f8","align":"center"},
             "nodeParent":1,
             "label":"Label(maxscore)",
             "isDirectory":false,
@@ -40,9 +37,8 @@
                 ]
         },
         {
-            "x":15,
             "type":"Label",
-            "props":{"y":231,"x":94,"width":218,"var":"myScore","text":"10M","height":60,"fontSize":60,"font":"BitMicro","color":"#e8e80b","bold":true,"align":"center"},
+            "props":{"y":167,"x":99,"width":218,"var":"myScore","text":"10M","height":60,"fontSize":60,"font":"BitMicro","color":"#e8e80b","bold":true,"align":"center"},
             "nodeParent":1,
             "label":"Label(myScore)",
             "isDirectory":false,
@@ -53,9 +49,8 @@
                 ]
         },
         {
-            "x":15,
             "type":"List",
-            "props":{"y":354,"x":65,"width":265,"var":"scoreList","repeatY":2,"repeatX":1,"renderType":"render","height":134},
+            "props":{"y":290,"x":70,"width":265,"var":"scoreList","repeatY":2,"repeatX":1,"renderType":"render","height":134},
             "nodeParent":1,
             "label":"List(scoreList)",
             "isOpen":true,
@@ -65,7 +60,6 @@
             "compId":8,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "props":{"y":0,"x":51,"width":228,"renderType":"render","name":"rander","height":46},
                     "nodeParent":8,
@@ -77,7 +71,6 @@
                     "compId":7,
                     "child":[
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"width":103,"text":"label","name":"m_label","height":23,"fontSize":22,"font":"BitMicro","color":"#5C9AD5"},
                             "nodeParent":7,
@@ -90,7 +83,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":3,"x":-51,"width":40,"skin":"score/normal.png","name":"m_img","height":40},
                             "nodeParent":7,
@@ -103,7 +95,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":8,"x":103,"width":113,"text":"label","name":"m_score","height":21,"fontSize":22,"font":"BitMicro","color":"#5C9AD5","align":"right"},
                             "nodeParent":7,
@@ -117,7 +108,6 @@
                             "$HIDDEN":true
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":28,"x":-2,"width":103,"name":"m_name","height":15,"fontSize":14,"font":"Helvetica","color":"#5C9AD5"},
                             "nodeParent":7,
@@ -131,7 +121,6 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"VScrollBar",
                     "props":{"y":-7,"x":275,"width":10,"name":"scrollBar","height":150},
                     "nodeParent":8,
@@ -146,9 +135,8 @@
                 }]
         },
         {
-            "x":15,
             "type":"Button",
-            "props":{"y":551,"x":56,"width":136,"var":"again","stateNum":"2","skin":"button/button_again.png","height":53},
+            "props":{"y":487,"x":61,"width":136,"var":"again","stateNum":"2","skin":"button/button_again.png","height":53},
             "nodeParent":1,
             "label":"Button(again)",
             "isDirectory":false,
@@ -159,9 +147,8 @@
                 ]
         },
         {
-            "x":15,
             "type":"Button",
-            "props":{"y":551,"x":209,"width":136,"var":"share","stateNum":"2","skin":"button/button_share.png","height":53},
+            "props":{"y":487,"x":214,"width":136,"var":"share","stateNum":"2","skin":"button/button_share.png","height":53},
             "nodeParent":1,
             "label":"Button(share)",
             "isDirectory":false,
@@ -172,7 +159,6 @@
                 ]
         },
         {
-            "x":15,
             "type":"Image",
             "props":{"y":17,"x":255,"width":131,"visible":false,"var":"arrow","skin":"score/share_arrow.png","height":139},
             "nodeParent":1,
@@ -188,61 +174,64 @@
         {
             "nodes":[
                 {
-                    "target":23,
+                    "target":25,
                     "keyframes":{
                         "y":[
                             {
-                                "value":19,
+                                "value":17,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
                                 "key":"y",
                                 "index":0
                             },
                             {
-                                "value":35,
+                                "value":55,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
                                 "key":"y",
-                                "index":5
+                                "index":15
                             },
                             {
-                                "value":23,
+                                "value":17,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
+                                "label":null,
                                 "key":"y",
-                                "index":10
+                                "index":30
                             }],
                         "x":[
                             {
-                                "value":251,
+                                "value":255,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
                                 "key":"x",
                                 "index":0
                             },
                             {
-                                "value":239,
+                                "value":225,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
+                                "label":null,
                                 "key":"x",
-                                "index":5
+                                "index":15
                             },
                             {
-                                "value":251,
+                                "value":255,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
-                                "target":23,
+                                "target":25,
+                                "label":null,
                                 "key":"x",
-                                "index":10
+                                "index":30
                             }]
                     }
                 }],
-            "name":"ani1",
+            "name":"share_ani",
             "id":1,
             "frameRate":24,
             "action":0

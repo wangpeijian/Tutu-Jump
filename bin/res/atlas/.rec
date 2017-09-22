@@ -5,7 +5,7 @@ R 8BA2A997 background_02.png
 R AC751221 background_03.png
 R DE6E49DB background_04.png
 R 2F12B549 background_05.png
-R 8465CD21 ranking.png
+R 043E59F7 ranking.png
 D button
 P 21220B4F button_again.png
 P 85EE60DB button_next.png
@@ -18,6 +18,7 @@ D input
 P 9331498A frame_01.png
 D lantern
 P 9FAE283D lanmp.png
+P E554403E smallamp1.png
 D logo
 P 51D6078E logo_01.png
 D moon
@@ -25,7 +26,7 @@ P 41ED3647 love.png
 P B2265C11 moon.png
 D pages
 R D849B70D cover_page_background.jpg
-R 58773442 explain_page_background.png
+R 383B81C7 explain_page_background.png
 R 30268AD1 form_page_background.png
 D rabbit
 P 9EE25D2C rabbit.png

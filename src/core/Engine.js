@@ -45,6 +45,10 @@
             //初始化背景
             this.background = new Background();
 
+            //创建粒子特效
+            Laya.stage.addChild(Special_Effects_Lantern);
+            Special_Effects_Lantern.visible = false;
+
             //-----------------创建月亮和母兔子-----------------
             this.moon = new Moon();
             //----------------------------------
@@ -89,6 +93,35 @@
                 return;
             }
 
+            var tutu = this.tutu;
+            var scorePanel = this.scorePanel;
+            var moon = this.moon;
+            var lantern = this.lantern;
+            //灯笼飞行倒计时
+            var lanternTimer = null;
+
+            //判断游戏是否结束
+            if (tutu.self.y > SCREEN_HEIGHT) {
+                //游戏结束
+                this.gameOver = true;
+
+                //兔兔死亡
+                tutu.dead();
+
+                //恢复游戏速度
+                GAME_SPEED = GAME_SPEED_DEFAULT;
+
+                //停止粒子动画
+                $helper.effectsLantern(false);
+
+                //保存分数
+                localStorage.setItem("score", scorePanel.score);
+
+                //清除灯笼的飞行定时任务
+                clearTimeout(lanternTimer);
+                return;
+            }
+
             //触发所有模块的动画
             this.background._move();
             this.tutu._move();
@@ -98,20 +131,6 @@
 
             for (var i = 0; i < CLOUD_NUMBER; i++) {
                 this.cloudList[i]._move();
-            }
-
-            
-            var tutu = this.tutu;
-            var scorePanel = this.scorePanel;
-            var moon = this.moon;
-            var lantern = this.lantern;
-
-            //判断游戏是否结束
-            if (tutu.self.y > SCREEN_HEIGHT) {
-                //游戏结束
-                tutu.dead();
-                this.gameOver = true;
-                return;
             }
 
             //展示得分
@@ -146,13 +165,18 @@
             }
 
             //3.灯笼碰撞
-            lantern.IsCollision(x, y, function(lanternX, lanternY){
+            lantern.IsCollision(tutu.self.x, tutu.self.y, function(lanternX, lanternY){
+                //播放粒子动画
+                $helper.effectsLantern(true);
+
                 //兔子跟随灯笼飞行
                 tutu.fly(lanternX, lanternY);
                 //游戏速度加快
                 GAME_SPEED = LANTERN_SPEED_RATE * LANTERN_SPEED;
 
-                setTimeout(function(){
+                lanternTimer = setTimeout(function(){
+                    $helper.effectsLantern(false);
+
                     GAME_SPEED = GAME_SPEED_DEFAULT;
                     lantern.castOff();
                     tutu.jump();

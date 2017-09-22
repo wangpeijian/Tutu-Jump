@@ -7,6 +7,7 @@
 
         _proto.share = function () {
             ranking.arrow.visible = !ranking.arrow.visible;
+            ranking.share_ani.play();
             // wxshare = new Laya.HttpRequest();
             // wxshare.once(Laya.Event.COMPLETE, this, this.onShareComplete);
             // wxshare.once(Laya.Event.ERROR, this, this.onShareError);
@@ -19,13 +20,28 @@
             hr.once(Laya.Event.PROGRESS, this, this.onHttpRequestProgress);
             hr.once(Laya.Event.COMPLETE, this, this.onHttpRequestComplete);
             hr.once(Laya.Event.ERROR, this, this.onHttpRequestError);
-            var jsondata = {
-                "openid": "1234568",
-                "name": "小白",
-                "phone": "18401373793",
-                "score": "1000"
+
+            var jsondata = {};
+            var code = "";
+            if ($helper.isYunFamily()) {
+                code = "1";
+                jsondata = {
+                    "score": localStorage.getItem("score"),
+                    "openid": localStorage.getItem("yun_openid"),
+                    "name": localStorage.getItem("yun_nickname"),
+                    "phone": localStorage.getItem("yun_phone"),
+                }
+            } else {
+                code = "2";
+                jsondata = {
+                    "score": localStorage.getItem("score"),
+                    "openid": localStorage.getItem("wx_openid"),
+                    "name": localStorage.getItem("wx_nickname"),
+                    "headimgurl": localStorage.getItem("wx_headimgurl"),
+                }
             }
-            hr.send('http://ntest.guoanfamily.com/game/api/over/2/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
+
+            hr.send('http://ntest.guoanfamily.com/game/api/over/' + code + '/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
 
         }
 
@@ -34,32 +50,31 @@
             ranking.zOrder = 2;
             Laya.stage.addChild(ranking);
             ranking.share.on(Laya.Event.CLICK, this, this.share)
-            ranking.again.on(Laya.Event.CLICK, this, function(){
+            ranking.again.on(Laya.Event.CLICK, this, function () {
                 Laya.stage.removeChildren();
                 reload();
             })
-            
+
             this.connect();
         }
 
         _proto.onHttpRequestError = function (e) {
-            console.log("error")
-            console.log(e);
+           
         }
 
         _proto.onHttpRequestProgress = function (e) {
-            console.log(e)
+           
         }
 
         _proto.onHttpRequestComplete = function (e) {
-            console.log("收到数据：" + JSON.stringify(hr.data))
+            
             ranking.myScore.text = hr.data.data.score.score + 'M';
             ranking.maxscore.text = hr.data.data.score.maxscore + 'M';
             var data = [];
             var m = 1;
-            console.log(hr.data.data.top);
+           
             for (var person of hr.data.data.top) {
-                console.log(person);
+             
                 data.push({
                     m_label: "No. " + m,
                     m_img: "res/head.png",
@@ -73,7 +88,7 @@
         }
 
         // _proto.onShareComplete = function (response) {
-            
+
         //     ranking.arrow.visible = !ranking.arrow.visible;
         //     console.log(response);
         //     wx.config({

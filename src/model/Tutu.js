@@ -3,11 +3,11 @@
     function Tutu() {
         var _proto = Tutu.prototype;
 
-        this._STATUS_JUMP = "jump";
-        this._STATUS_FAT_JUMP = "fat_jump";
+        this._STATUS_JUMP = "rabbitJump";
+        this._STATUS_FAT_JUMP = "rabbitFatJump";
         this._STATUS_FALL = "fall";
-        this._STATUS_FLY = "fly";
-        this._STATUS_FAT_FLY = "fat_fly";
+        this._STATUS_FLY = "rabbitFly";
+        this._STATUS_FAT_FLY = "rabbitFatFly";
 
         this._isFat = false;
 
@@ -71,11 +71,11 @@
         }
 
         _proto.dead = function(){
-            Laya.SoundManager.playSound("./res/sounds/death.mp3", 1);
+            Laya.SoundManager.playSound(TUTU_DEATH_SOUND, 1);
         }
 
         _proto.jump = function () {
-            var sound = this._isFat ? "./res/sounds/jumpslow.mp3" : "./res/sounds/jump.mp3"
+            var sound = this._isFat ? TUTU_JUMP_FAT_SOUND : TUTU_JUMP_SOUND
             Laya.SoundManager.playSound(sound, 1);
 
             this.changeStatus(this._STATUS_JUMP);
@@ -89,6 +89,8 @@
             //tutu与灯笼居中对齐
             this.self.x = lanternX - (TUTU_WIDTH - LANTERN_WIDTH);
             this.self.y = lanternY + LANTERN_HEIGHT + 20;
+
+            Laya.SoundManager.playSound(TUTU_FLY_SOUND, 1);
 
             this.changeStatus(this._STATUS_FLY);
         }
@@ -148,7 +150,7 @@
             }
         }
 
-        _proto._move = function () {
+        _proto._move = function () { 
             //跳起和下落有重力
             if (this.jumping || this.falling) {
                 this.speed = this.speed + TUTU_FALL_G;

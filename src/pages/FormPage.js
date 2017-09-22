@@ -39,10 +39,12 @@
             y += INPUT_HEIGHT + FORM_MARGIN_BOTTOM;
             $helper.createInput("NAME", x, y, function (obj) {
                 name = obj;
+                name.text = localStorage.getItem("yun_nickname");
             });
             y += INPUT_HEIGHT + FORM_MARGIN_BOTTOM;
             $helper.createInput("MOBILE", x, y, function (obj) {
                 mobile = obj;
+                mobile.text = localStorage.getItem("yun_phone");
             });
             y += INPUT_HEIGHT + FORM_MARGIN_BOTTOM;
 

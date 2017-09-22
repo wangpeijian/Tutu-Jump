@@ -20,14 +20,13 @@
             //添加到舞台
             Laya.stage.addChild(this.self);
 
-             //监控手机左右晃动
+            //监控手机左右晃动
             Laya.Accelerator.instance.on(Laya.Event.CHANGE, window, this._transverseMove.bind(this));
         }
 
-
         _proto._move = function () {
-            if(this._carrying){
-               return;
+            if (this._carrying) {
+                return;
             }
 
             //灯笼向上移动
@@ -50,43 +49,40 @@
         }
 
         //判断物体是否碰撞
-        _proto.IsCollision = function(x, y, cb){
-            if(this._used){
+        _proto.IsCollision = function (x, y, cb) {
+            if (this._used) {
                 return;
             }
 
-            if(this.self.y > 0){
+            if (this.self.y > 0 && this.self.y + LANTERN_WIDTH < SCREEN_HEIGHT) {
                 // 判断横坐标在不在范围内
-                if(this.self.x + LANTERN_WIDTH >= x && this.self.x <= x + TUTU_WIDTH){
-                    if(this.self.y + LANTERN_HEIGHT >= y && this.self.y <= y + TUTU_HEIGHT){
+                if (this.self.x + LANTERN_WIDTH >= x && this.self.x <= x + TUTU_WIDTH) {
+                    if (this.self.y + LANTERN_HEIGHT >= y && this.self.y <= y + TUTU_HEIGHT) {
                         this._carrying = true;
                         this._used = true;
 
                         //抓住兔子后开始加速倒计时
-                        var _this = this;
                         var countDown = new Laya.Sprite();
-                        //注册页面中使用的字体
-                       // $helper.createFontFamily(function () {
-                            var countDown = new laya.display.Text();
-                            countDown.x = 20;
-                            countDown.y = 10;
-                            countDown.fontSize = 40;
-                            countDown.text = LANTERN_FLY_TIME / 1000;
-                            countDown.color = BUTTON_FONT_COLOR;
-                            countDown.align = "center";
-                            countDown.bold = true;
+                        var countDown = new laya.display.Text();
+                        countDown.x = 20;
+                        countDown.y = 10;
+                        countDown.fontSize = 40;
+                        countDown.text = LANTERN_FLY_TIME / 1000;
+                        countDown.color = BUTTON_FONT_COLOR;
+                        countDown.align = "center";
+                        countDown.bold = true;
 
-                            var timer = setInterval(function(){
-                                countDown.text = countDown.text - 1;
+                        var _this = this;
+                        var timer = setInterval(function () {
+                            countDown.text = countDown.text - 1;
 
-                                if(countDown.text == 0){
-                                    _this.self.removeChild(countDown);
-                                    window.clearInterval(timer)
-                                }
-                            }, 1000);
+                            if (countDown.text == 0) {
+                                _this.self.removeChild(countDown);
+                                window.clearInterval(timer)
+                            }
+                        }, 1000);
 
-                             _this.self.addChild(countDown);
-                        //});
+                        this.self.addChild(countDown);
 
                         cb(this.self.x, this.self.y);
                     }
@@ -95,23 +91,23 @@
         }
 
         //丢弃兔子
-        _proto.castOff = function(){
+        _proto.castOff = function () {
             this._carrying = false;
         }
 
         //控制灯笼横向移动
         _proto._transverseMove = function (acceleration, accelerationIncludingGravity, rotationRate, interval) {
             //携带兔子时灯笼也可以横向移动
-            if(!this._carrying){
+            if (!this._carrying) {
                 return;
             }
 
             this.self.x += accelerationIncludingGravity.x;
 
-            if (this.self.x 　< 0) {
+            if (this.self.x < 0) {
                 this.self.x = 0;
-            } else if (this.self.x 　> SCREEN_WIDTH - LANTERN_WIDTH) {
-                this.self.x 　= SCREEN_WIDTH - LANTERN_WIDTH;
+            } else if (this.self.x > SCREEN_WIDTH - LANTERN_WIDTH) {
+                this.self.x = SCREEN_WIDTH - LANTERN_WIDTH;
             }
         }
 
