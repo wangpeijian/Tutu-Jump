@@ -97,8 +97,12 @@
             var scorePanel = this.scorePanel;
             var moon = this.moon;
             var lantern = this.lantern;
+            
             //灯笼飞行倒计时
             var lanternTimer = null;
+
+            //兔子变瘦倒计时
+             var tutuFatTimer = null;
 
             //判断游戏是否结束
             if (tutu.self.y > SCREEN_HEIGHT) {
@@ -119,6 +123,9 @@
 
                 //清除灯笼的飞行定时任务
                 clearTimeout(lanternTimer);
+
+                //清除兔子变瘦的定时任务
+                clearTimeout(tutuFatTimer);
                 return;
             }
 
@@ -143,6 +150,7 @@
                 //如果升过3级则兔子变胖                
                 if(scorePanel.upgrade()){
                     tutu.fat();
+                    //tutuFatTimer.
                 }
 
                 //兔子出桃心

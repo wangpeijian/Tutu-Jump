@@ -77,7 +77,7 @@
              
                 data.push({
                     m_label: "No. " + m,
-                    m_img: "res/head.png",
+                    m_img: person.headimgurl || "res/head.png",
                     m_name: person.name + "",
                     m_score: person.maxscore + "M"
                 });
