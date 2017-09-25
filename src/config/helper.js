@@ -54,6 +54,8 @@
         }
 
         _proto.getUserInfo = function () {
+            return;
+
             if (this.isYunFamily()) {
                 XuntongJSBridge.call('getPersonInfo', {}, function(result) {
                         localStorage.setItem("yun_nickname", result.data.name );
@@ -62,7 +64,7 @@
                 });
             } else {
                 //如果没有openid则跳去授权获取客户信息
-                if (!localStorage.getItem("openid")) {
+                if (!localStorage.getItem("wx_openid")) {
                     //如果链接中也没有参数则跳转授权
                     if(!this.getQueryString("openid")){
                         window.location.href = "http://act.guoanfamily.com/openweixin/user/getCode?redirect_url=" + window.location.href;

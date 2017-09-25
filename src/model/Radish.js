@@ -18,15 +18,16 @@
             //this.loop();
         }
 
-        _proto._move = function () {
-            //云彩只能向下移动
-            this.self.y += GAME_SPEED;
+        _proto._move = function (playCreateRadish) {
+            //萝卜只能向下移动
+            this.self.y += GAME_SPEED * 2;
             
             //每一个整屏高度的倍数计算一次
             if (this.self.y > SCREEN_HEIGHT  && this.self.y % SCREEN_HEIGHT < SCREEN_HEIGHT * RADISH_CHANCE) {
                 //下一次是否出现根据 -> 随机数是否在几率之中
                 if (Math.random() < RADISH_CHANCE) {
                     this.setPosition();
+                    playCreateRadish();
                 }
             }
         }

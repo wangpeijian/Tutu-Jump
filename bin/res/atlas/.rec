@@ -1,4 +1,5 @@
 D .
+R 9FAE283D lanmpRain.png
 D background
 R 59E90D12 background_01.png
 R 8BA2A997 background_02.png
@@ -12,34 +13,33 @@ P 85EE60DB button_next.png
 P 2012513C button_share.png
 P B33FE9C7 button_start.png
 D cloud
-P 11B43032 cloud_01.png
-P BB06FF6C cloud_02.png
+P E84D297E cloud_01.png
+P DB092293 cloud_02.png
 D input
 P 9331498A frame_01.png
 D lantern
 P 9FAE283D lanmp.png
-P E554403E smallamp1.png
 D logo
-P 51D6078E logo_01.png
+P 9C62BD81 logo_01.png
 D moon
 P 41ED3647 love.png
 P B2265C11 moon.png
 D pages
-R D849B70D cover_page_background.jpg
-R 383B81C7 explain_page_background.png
+R 6DE5C8DB cover_page_background.jpg
+R 75E20BB2 explain_page_background.png
 R 30268AD1 form_page_background.png
 D rabbit
 P 9EE25D2C rabbit.png
+P F6406E2F rabbit_fat.png
+P 77339712 rabbit_fat_squat.png
 P 8D34BBE7 rabbit_squat.png
-D rabbit_fat
-P 1789BE0F rabbit_fat.png
-P D9D5A7B4 rabbit_fat_squat.png
 D radish
-P 23DAAFDC radish.png
+P 4620F06C radish.png
 D score
 P 19BA4942 fat.png
-P 1D973DAB fat_empty.png
-P 1452A7A0 normal.png
-P 5CB6701E radish_empty.png
+P 588166E2 fat_empty.png
+P 5DB58D47 normal.png
+P 431ED356 radish.png
+P BD21D53F radish_empty.png
 P 4CD3EB1B scoreboard.png
 P 56579786 share_arrow.png

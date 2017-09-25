@@ -133,7 +133,9 @@
             this.background._move();
             this.tutu._move();
             this.lantern._move();
-            this.radish._move();
+            this.radish._move(function(){
+                moon.throwRadish();
+            });
             this.scorePanel._move();
 
             for (var i = 0; i < CLOUD_NUMBER; i++) {
@@ -150,14 +152,17 @@
                 //如果升过3级则兔子变胖                
                 if(scorePanel.upgrade()){
                     tutu.fat();
-                    //tutuFatTimer.
+                    tutuFatTimer = setTimeout(function(){
+                        tutu.restore();
+                        scorePanel.createStatus(true);
+                    }, TUTU_FAT_TIME)
                 }
 
                 //兔子出桃心
-                //tutu.love();
+                tutu.love();
 
                 //母兔子出桃心
-                //moon.love();
+                moon.love();
             });
 
             //2.云彩碰撞

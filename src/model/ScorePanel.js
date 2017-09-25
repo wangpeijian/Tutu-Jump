@@ -6,17 +6,16 @@
         this.self = null;
         this.scoreText = null;
         this.radishList = [];
-        this.fat = null;
+        this.fatStatus = new Laya.Animation();
+        this.fatStatus.loadAnimation(STATUS_ANI);
 
         this.level = 0;
         this.score = 0;
 
         _proto.init = function () {
             //初始化数据
-            this.fat = null;
             this.level = 0;
             this.score = 0;
-            this.radishList = [];
 
             //初始化积分面板
             var scorePanel = new Laya.Sprite();
@@ -35,59 +34,32 @@
             this.scoreText = scoreText;
             scorePanel.addChild(scoreText);
 
-            //初始化兔子状态条
-            var x = 40, y = 50;
-            var l_normal = new Laya.Sprite();
-            l_normal.loadImage(STATUS_NORMAL, x, y, STATUS_NORMAL_WIDTH, STATUS_NORMAL_HEIGHT);
-            scorePanel.addChild(l_normal);
-            for (var i = 0; i < 3; i++) {
-                var l_radish = new Laya.Sprite();
-                if (i === 0) {
-                    x += STATUS_NORMAL_WIDTH + STATUS_PADDING;
-                } else {
-                    x += STATUS_RADISH_WIDTH + STATUS_PADDING;
-                }
-
-                var status = new Laya.Sprite();
-                l_normal.loadImage(STATUS_RADISH_EMPTY, x, y, STATUS_RADISH_WIDTH, STATUS_RADISH_HEIGHT);
-                scorePanel.addChild(l_radish);
-                this.radishList.push(l_radish);
-            }
-
-            x += STATUS_RADISH_WIDTH + STATUS_PADDING;
-            y = 50;
-            var l_fat = new Laya.Sprite();
-            l_fat.loadImage(STATUS_FAT_EMPTY, x, y, STATUS_FAT_WIDTH, STATUS_FAT_HEIGHT);
-            this.fat = l_fat;
-            scorePanel.addChild(l_fat);
+            this.fatStatus.x = 40;
+            this.fatStatus.y = 50;
+            scorePanel.addChild(this.fatStatus);
+            this.createStatus(true);
 
             Laya.stage.addChild(scorePanel);
         }
 
         _proto.upgrade = function () {
             ++this.level;
+            this.createStatus();
+            return this.level === 3;
+        }
 
-            var x = 40, y = 50;
-            for (var i = 0; i < 3; i++) {
-                if (this.level - i <= 0) {
-                    return;
-                }
-
-                if (i === 0) {
-                    x += STATUS_NORMAL_WIDTH + STATUS_PADDING;
-                } else {
-                    x += STATUS_RADISH_WIDTH + STATUS_PADDING;
-                }
-
-                var radish = this.radishList[i];
-                radish.loadImage(STATUS_RADISH, x, y, STATUS_RADISH_WIDTH, STATUS_RADISH_HEIGHT);
-
-                if (i === 2) {
-                    x += STATUS_RADISH_WIDTH + STATUS_PADDING;
-                    y = 50;
-                    this.fat.loadImage(STATUS_FAT, x, y, STATUS_FAT_WIDTH, STATUS_FAT_HEIGHT);
-                }
+        _proto.createStatus = function (clear) {
+            if (clear) {
+                this.level = 0;
             }
+
+            //初始化兔子状态条
+            var scorePanel = this.self;
+            var fatStatus = this.fatStatus;
+            var level = this.level > 3 ? 3 : this.level;
+            fatStatus.play(level, false);
+            fatStatus.stop();
+            scorePanel.addChild(fatStatus);
 
             return this.level === 3;
         }

@@ -41,6 +41,7 @@
                 }
             }
 
+            ranking.scoreList.array = [];
             hr.send('http://ntest.guoanfamily.com/game/api/over/' + code + '/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
 
         }
@@ -59,32 +60,58 @@
         }
 
         _proto.onHttpRequestError = function (e) {
-           
+
         }
 
         _proto.onHttpRequestProgress = function (e) {
-           
+
         }
 
         _proto.onHttpRequestComplete = function (e) {
-            
+
             ranking.myScore.text = hr.data.data.score.score + 'M';
             ranking.maxscore.text = hr.data.data.score.maxscore + 'M';
             var data = [];
             var m = 1;
-           
-            for (var person of hr.data.data.top) {
-             
-                data.push({
-                    m_label: "No. " + m,
-                    m_img: person.headimgurl || "res/head.png",
-                    m_name: person.name + "",
-                    m_score: person.maxscore + "M"
-                });
-                m += 1;
-            }
-            ranking.scoreList.array = data;
 
+            if ($helper.isYunFamily()) {
+                for (var person of hr.data.data.top) {
+
+                        data.push({
+                            m_label: "No. " + m,
+                            m_img: "score/normal.png",
+                            m_name: person.name + "",
+                            m_score: person.maxscore + "M"
+                        });
+                        m += 1;
+                    }
+                ranking.scoreList.array = data;
+            } else {
+                var images = [];
+                for (var user of hr.data.data.top) {
+                    images.push(user.headimgurl);
+                }
+
+                var asset = [];
+                asset.push({
+                    url: images,
+                    type: Laya.Loader.IMAGE
+                });
+
+                Laya.loader.load(asset, laya.utils.Handler.create(this, function () {
+                    for (var person of hr.data.data.top) {
+
+                        data.push({
+                            m_label: "No. " + m,
+                            m_img: person.headimgurl || "score/normal.png",
+                            m_name: person.name + "",
+                            m_score: person.maxscore + "M"
+                        });
+                        m += 1;
+                    }
+                    ranking.scoreList.array = data;
+                }));
+            }
         }
 
         // _proto.onShareComplete = function (response) {

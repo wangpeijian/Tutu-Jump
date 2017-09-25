@@ -14,16 +14,18 @@
 		Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
 		Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
 		Laya.stage.scaleMode = Laya.Stage.SCREEN_NONE;
+		//FPS
+		//Laya.Stat.show(0,-200);
 	}
 
 	function systenRun() {
 		var text = new Laya.Text();
-        text.fontSize = 40;
-        text.color = "#FF00FF";
-        text.text = "A10";
-        text.font = "BitMicro"
-        text.pos(600, 600);
-        Laya.stage.addChild(text);
+		        text.fontSize = 40;
+		        text.color = "#FF00FF";
+		        text.text = "A10";
+		        text.font = "BitMicro"
+		        text.pos(600, 600);
+		        Laya.stage.addChild(text);
 
 		OBJECT_COVER_PAGE.init($helper.isYunFamily() ? createFormPage : createExplainPage);
 
@@ -117,16 +119,22 @@
 	});
 	asset.push({
 		url: ["./res/atlas/button.json",
-		"./res/atlas/input.json",
-		"./res/atlas/logo.json",
-		"./res/atlas/score.json",
-		"./res/atlas/radish.json",
-		 "./res/atlas/cloud.json",
-		 "./res/atlas/moon.json",
-		 "./res/atlas/lantern.json",
-		 ],
+			"./res/atlas/input.json",
+			"./res/atlas/logo.json",
+			"./res/atlas/score.json",
+			"./res/atlas/radish.json",
+			"./res/atlas/cloud.json",
+			"./res/atlas/moon.json",
+			"./res/atlas/lantern.json",
+			"./res/atlas/rabbit.json",
+		],
 		type: Laya.Loader.ATLAS
-	})
+	});
+
+	asset.push({
+		url: [TUTU_JUMP_SOUND, TUTU_JUMP_FAT_SOUND, TUTU_DEATH_SOUND, TUTU_FLY_SOUND],
+		type: Laya.Loader.SOUND
+	});
 
 	//保存客户信息
 	$helper.getUserInfo()
@@ -135,7 +143,7 @@
 	initWechat();
 
 	window.Special_Effects_Lantern = null;
-	Laya.loader.load("flyagain.part", laya.utils.Handler.create(this, function(setting){
+	Laya.loader.load("flyagain.part", laya.utils.Handler.create(this, function (setting) {
 		Special_Effects_Lantern = new Laya.Particle2D(setting);
 		Special_Effects_Lantern.emitter.start();
 	}));

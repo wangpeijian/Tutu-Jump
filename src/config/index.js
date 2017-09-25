@@ -67,8 +67,8 @@ var LANTERN_SPEED_RATE = 2;
 //萝卜资源
 var RADISH_IMAGE = 'radish/radish.png';
 //萝卜尺寸
-var RADISH_WIDTH = 30;
-var RADISH_HEIGHT = 30;
+var RADISH_WIDTH = 60;
+var RADISH_HEIGHT = 60;
 //萝卜出现的几率
 var RADISH_CHANCE = 1;
 
@@ -98,7 +98,7 @@ var TUTU_FLY_INIT_SPEED = 10;
 //tutu重力加速度
 var TUTU_FALL_G = -0.25;
 
-//tutu尺寸
+//胖tutu尺寸
 var TUTU_FAT_WIDTH = 120;
 var TUTU_FAT_HEIGHT = 120;
 //tutu起跳速度
@@ -108,13 +108,21 @@ var TUTU_FAT_FLY_INIT_SPEED = 10;
 //tutu重力加速度
 var TUTU_FAT_FALL_G = -0.3;
 //tutu移动阻力
-var TUTU_MOVE_FRICTION = 0.8;
+var TUTU_FAT_MOVE_FRICTION = 0.8;
+//胖tutu变身时间
+var TUTU_FAT_TIME = 5000;
+
+//tutu桃心动画
+var TUTU_LOVE_WIDTH = 45;
+var TUTU_LOVE_HEIGHT = 45;
+var TUTU_LOVE_ANI = './tutuLove.ani';
 
 //月亮配置
 var MOON = 'moon/moon.png';
-var MOON_LOVE = 'moon/love.png';
 var MOON_WIDTH = 232;
 var MOON_HEIGHT = 178;
+var MOON_LOVE_ANI = "./moonLove.ani";
+var MOON_THROW_RADISH_ANI = "./moonThrewRadish.ani";
 
 /** ------------------------------页面资源配置----------------------------------------- */
 //按钮皮肤
@@ -159,16 +167,18 @@ var GAME_SCORE_PANEL = 'score/scoreboard.png'
 var GAME_SCORE_PANEL_WIDTH = 220;
 var GAME_SCORE_PANEL_HEIGHT = 30;
 
-var STATUS_NORMAL = 'score/normal.png'
-var STATUS_NORMAL_WIDTH = 15;
-var STATUS_NORMAL_HEIGHT = 20;
-var STATUS_RADISH_EMPTY = 'score/radish_empty.png'
-var STATUS_RADISH = 'radish/radish.png'
-var STATUS_RADISH_WIDTH = 15;
-var STATUS_RADISH_HEIGHT = 20;
-var STATUS_FAT_EMPTY = 'score/fat_empty.png'
-var STATUS_FAT = 'score/fat.png'
-var STATUS_FAT_WIDTH = 15;
-var STATUS_FAT_HEIGHT = 20;
-//面板状态间距
-var STATUS_PADDING = 10;
+// var STATUS_NORMAL = 'score/normal.png'
+// var STATUS_NORMAL_WIDTH = 15;
+// var STATUS_NORMAL_HEIGHT = 20;
+// var STATUS_RADISH_EMPTY = 'score/radish_empty.png'
+// var STATUS_RADISH = 'radish/radish.png'
+// var STATUS_RADISH_WIDTH = 15;
+// var STATUS_RADISH_HEIGHT = 20;
+// var STATUS_FAT_EMPTY = 'score/fat_empty.png'
+// var STATUS_FAT = 'score/fat.png'
+// var STATUS_FAT_WIDTH = 15;
+// var STATUS_FAT_HEIGHT = 20;
+// //面板状态间距
+// var STATUS_PADDING = 10;
+
+var STATUS_ANI = './fatStaus.ani';
