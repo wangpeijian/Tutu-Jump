@@ -42,7 +42,7 @@
             }
 
             ranking.scoreList.array = [];
-            hr.send('http://ntest.guoanfamily.com/game/api/over/' + code + '/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
+            hr.send('http://www.guoanfamily.com/game/api/over/' + code + '/3', JSON.stringify(jsondata), 'post', 'json', ["Content-Type", "application/json;charset=UTF-8"]);
 
         }
 

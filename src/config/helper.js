@@ -54,7 +54,7 @@
         }
 
         _proto.getUserInfo = function () {
-            return;
+            // return;
 
             if (this.isYunFamily()) {
                 XuntongJSBridge.call('getPersonInfo', {}, function(result) {
@@ -96,6 +96,25 @@
                 Special_Effects_Lantern.visible = false;
                 Special_Effects_Lantern.stop();
             }
+        }
+
+        _proto.setDifficulty = function(rate){
+                var v_rate = 0.14;
+                var g_rate = 0.007;
+                if(rate >= 15){
+                    v_rate = 0.14;
+                    g_rate = 0.009;
+                }
+                if (rate >= 30) {
+                    v_rate = 0.20;
+                    g_rate = 0.018;
+                }else if(rate >= 50){
+                    v_rate = 0.22;
+                    g_rate = 0.020;
+                }
+
+                TUTU_JUMP_INIT_SPEED = 10 + rate * v_rate;
+                TUTU_FALL_G = -0.3 - rate * g_rate;
         }
 
     }

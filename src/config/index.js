@@ -18,6 +18,10 @@ var GAME_FRAME = 1;
 var GAME_SPEED_DEFAULT = 2
 //游戏速度
 var GAME_SPEED = GAME_SPEED_DEFAULT;
+//游戏加速频率
+var GAME_ADD_SPEED_FREQUENCY = 1000;
+//游戏加速系数
+var GAME_ADD_SPEED_RATE = 0.1;
 //游戏得分系数
 var GAME_SCORE_RATIO = 0.1;
 //游戏BGM
@@ -53,10 +57,10 @@ var LANTERN_SPEED = GAME_SPEED * 2;
 var LANTERN_IMAGE = 'lantern/lanmp.png';
 var LANTERN_ANI = './lanmpUp.ani';
 //灯笼尺寸
-var LANTERN_WIDTH = 70;
-var LANTERN_HEIGHT = 70;
+var LANTERN_WIDTH = 90;
+var LANTERN_HEIGHT = 109;
 //灯笼出现的几率
-var LANTERN_CHANCE = 1;
+var LANTERN_CHANCE = 0.1;
 //灯笼加速n毫秒
 var LANTERN_FLY_TIME = 5 * 1000;
 //灯笼加速倍数
@@ -159,7 +163,8 @@ var COVER_PAGE_BACKGROUND = './pages/cover_page_background.jpg';
 var FORM_PAGE_BACKGROUND = './pages/form_page_background.png';
 
 //说明页
-var EXPLAIN_PAGE_BACKGROUND = './pages/explain_page_background.png';
+var EXPLAIN_PAGE_BACKGROUND_YUN = './pages/explain_page_background_yun.png';
+var EXPLAIN_PAGE_BACKGROUND_WX = './pages/explain_page_background_wx.png';
 
 //游戏页面
 //计分板

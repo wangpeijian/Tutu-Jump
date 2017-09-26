@@ -112,7 +112,7 @@
 			"./background/background_04.png",
 			"./background/background_05.png",
 			"./pages/cover_page_background.jpg",
-			"./pages/explain_page_background.png",
+			$helper.isYunFamily() ? "./pages/explain_page_background_yun.png" : "./pages/explain_page_background_wx.png",
 			"./pages/form_page_background.png",
 		],
 		type: Laya.Loader.IMAGE

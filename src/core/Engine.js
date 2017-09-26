@@ -13,16 +13,19 @@
 
         this.gameOver = false;
         this.gameOverCallback = null;
-        this.executed = false;
+        this.gameOverExecuted = false;
+
+        this.gameStart = false;
 
         _proto.start = function () {
             this.tutu.jump();
-            Laya.timer.frameLoop(GAME_FRAME, this, this._move);  
+            Laya.timer.frameLoop(GAME_FRAME, this, this._move);
+            this.gameStart = true;
         }
 
         //初始化游戏场景
         _proto.init = function (cb) {
-            if(cb){
+            if (cb) {
                 this.gameOverCallback = cb;
             }
 
@@ -34,7 +37,9 @@
             this.startButton = null;
             this.moon = null;
             this.gameOver = false;
-            this.executed = false;
+            this.gameOverExecuted = false;
+
+            this.gameStart = false;
 
             var _this = this;
 
@@ -57,8 +62,8 @@
             for (var i = 0; i < CLOUD_NUMBER; i++) {
                 var coordinateX = Math.random() * (SCREEN_WIDTH - CLOUD_WIDTH);
 
-                //游戏开始时少展示两个云彩
-                var coordinateY = ((SCREEN_HEIGHT - CLOUD_HEIGHT * (CLOUD_NUMBER - 1)) / (CLOUD_NUMBER - 1) + CLOUD_HEIGHT) * (i - 2);
+                //游戏开始时少展示1个云彩
+                var coordinateY = ((SCREEN_HEIGHT - CLOUD_HEIGHT * (CLOUD_NUMBER - 1)) / (CLOUD_NUMBER - 1) + CLOUD_HEIGHT) * (i - 1);
 
                 var cloud = new Cloud(coordinateX, coordinateY);
                 this.cloudList.push(cloud);
@@ -84,10 +89,10 @@
         //开始动画
         _proto._move = function () {
             if (this.gameOver) {
-                if(!this.executed){
-                    this.executed = true;
+                if (!this.gameOverExecuted) {
+                    this.gameOverExecuted = true;
                     this.gameOverCallback();
-                }else{
+                } else {
                     Laya.timer.clear(this, this._move);
                 }
                 return;
@@ -97,12 +102,12 @@
             var scorePanel = this.scorePanel;
             var moon = this.moon;
             var lantern = this.lantern;
-            
+
             //灯笼飞行倒计时
             var lanternTimer = null;
 
             //兔子变瘦倒计时
-             var tutuFatTimer = null;
+            var tutuFatTimer = null;
 
             //判断游戏是否结束
             if (tutu.self.y > SCREEN_HEIGHT) {
@@ -114,6 +119,8 @@
 
                 //恢复游戏速度
                 GAME_SPEED = GAME_SPEED_DEFAULT;
+                TUTU_JUMP_INIT_SPEED = 10;
+                TUTU_FALL_G = -0.3;
 
                 //停止粒子动画
                 $helper.effectsLantern(false);
@@ -130,10 +137,17 @@
             }
 
             //触发所有模块的动画
+            var tutuSpeed = this.tutu._move();
+            if (!this.lantern._carrying) {
+                var rate = parseInt(scorePanel.score / GAME_ADD_SPEED_FREQUENCY);
+                GAME_SPEED = GAME_SPEED_DEFAULT + rate * GAME_ADD_SPEED_RATE + tutuSpeed;
+                $helper.setDifficulty(rate);
+                //TUTU_FLY_INIT_SPEED = TUTU_FLY_INIT_SPEED + rate * 0.5;
+            }
+
             this.background._move();
-            this.tutu._move();
             this.lantern._move();
-            this.radish._move(function(){
+            this.radish._move(function () {
                 moon.throwRadish();
             });
             this.scorePanel._move();
@@ -150,9 +164,9 @@
             //1.吃萝卜碰撞
             this.radish.IsCollision(tutu.self.x, tutu.self.y, function () {
                 //如果升过3级则兔子变胖                
-                if(scorePanel.upgrade()){
+                if (scorePanel.upgrade()) {
                     tutu.fat();
-                    tutuFatTimer = setTimeout(function(){
+                    tutuFatTimer = setTimeout(function () {
                         tutu.restore();
                         scorePanel.createStatus(true);
                     }, TUTU_FAT_TIME)
@@ -178,7 +192,7 @@
             }
 
             //3.灯笼碰撞
-            lantern.IsCollision(tutu.self.x, tutu.self.y, function(lanternX, lanternY){
+            lantern.IsCollision(tutu.self.x, tutu.self.y, function (lanternX, lanternY) {
                 //播放粒子动画
                 $helper.effectsLantern(true);
 
@@ -187,10 +201,15 @@
                 //游戏速度加快
                 GAME_SPEED = LANTERN_SPEED_RATE * LANTERN_SPEED;
 
-                lanternTimer = setTimeout(function(){
+                lanternTimer = setTimeout(function () {
                     $helper.effectsLantern(false);
 
-                    GAME_SPEED = GAME_SPEED_DEFAULT;
+                    //GAME_SPEED = GAME_SPEED_DEFAULT + parseInt(scorePanel.score / GAME_ADD_SPEED_FREQUENCY) * GAME_ADD_SPEED_RATE;
+                    var rate = parseInt(scorePanel.score / GAME_ADD_SPEED_FREQUENCY);
+                    var rate = parseInt(scorePanel.score / GAME_ADD_SPEED_FREQUENCY);
+                    GAME_SPEED = GAME_SPEED_DEFAULT + rate * GAME_ADD_SPEED_RATE;
+                    $helper.setDifficulty(rate);
+
                     lantern.castOff();
                     tutu.jump();
                 }, LANTERN_FLY_TIME)

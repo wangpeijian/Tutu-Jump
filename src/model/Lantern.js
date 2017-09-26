@@ -61,16 +61,20 @@
                         this._carrying = true;
                         this._used = true;
 
+                        //灯笼移动到兔子头顶
+                        this.self.y = y - LANTERN_HEIGHT;
+                        this.self.x = x + TUTU_WIDTH / 2 - LANTERN_WIDTH / 2;
+
                         //抓住兔子后开始加速倒计时
                         var countDown = new Laya.Sprite();
                         var countDown = new laya.display.Text();
-                        countDown.x = 20;
-                        countDown.y = 10;
-                        countDown.fontSize = 40;
+                        countDown.x = 30;
+                        countDown.y = 30;
+                        countDown.fontSize = 60;
                         countDown.text = LANTERN_FLY_TIME / 1000;
                         countDown.color = BUTTON_FONT_COLOR;
                         countDown.align = "center";
-                        countDown.bold = true;
+                        //countDown.bold = true;
 
                         var _this = this;
                         var timer = setInterval(function () {

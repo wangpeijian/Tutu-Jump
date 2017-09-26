@@ -7,8 +7,8 @@
         this._STATUS_FAT_FLY = "rabbitFatFly";
         this._STATUS_FALL = "fall";
 
-        laya.display.Animation.createFrames(['rabbit/rabbit.png','rabbit/rabbit_squat.png'], this._STATUS_JUMP);
-        laya.display.Animation.createFrames(['rabbit/rabbit_fat.png','rabbit/rabbit_fat_squat.png'], this._STATUS_FAT_JUMP);
+        laya.display.Animation.createFrames(['rabbit/rabbit.png', 'rabbit/rabbit_squat.png'], this._STATUS_JUMP);
+        laya.display.Animation.createFrames(['rabbit/rabbit_fat.png', 'rabbit/rabbit_fat_squat.png'], this._STATUS_FAT_JUMP);
         laya.display.Animation.createFrames(['rabbit/rabbit.png'], this._STATUS_FLY);
         laya.display.Animation.createFrames(['rabbit/rabbit_fat.png'], this._STATUS_FAT_FLY);
 
@@ -16,9 +16,6 @@
 
         //兔子是否变胖
         this._isFat = false;
-
-        //播放兔子桃心
-        this._isLove = false;
 
         //处在跳跃状态
         this.jumping = false;
@@ -79,10 +76,10 @@
             //监控手机左右晃动
             Laya.Accelerator.instance.on(Laya.Event.CHANGE, window, this._transverseMove.bind(this));
 
-            Laya.stage.on(Laya.Event.KEY_DOWN, this, function(e){
-                if(e["keyCode"] == 37){
+            Laya.stage.on(Laya.Event.KEY_DOWN, this, function (e) {
+                if (e["keyCode"] == 37) {
                     this.self.x -= 30
-                }else if(e["keyCode"] == 39){
+                } else if (e["keyCode"] == 39) {
                     this.self.x += 30
                 }
 
@@ -112,8 +109,8 @@
 
         _proto.fly = function (lanternX, lanternY) {
             //tutu与灯笼居中对齐
-            this.self.x = lanternX - (TUTU_WIDTH - LANTERN_WIDTH);
-            this.self.y = lanternY + LANTERN_HEIGHT + 20;
+            // this.self.x = lanternX - (TUTU_WIDTH - LANTERN_WIDTH);
+            // this.self.y = lanternY + LANTERN_HEIGHT + 20;
 
             Laya.SoundManager.playSound(TUTU_FLY_SOUND, 1);
 
@@ -169,7 +166,7 @@
                     this.jumping = true;
                     this.speed = TUTU_JUMP_INIT_SPEED;
 
-                    this.self.play(0, false, this._isFat ? this._STATUS_FAT_JUMP  : this._STATUS_JUMP );
+                    this.self.play(0, false, this._isFat ? this._STATUS_FAT_JUMP : this._STATUS_JUMP);
                     break;
 
                 case this._STATUS_FALL:
@@ -180,25 +177,28 @@
                     this.self.interval = LANTERN_FLY_TIME;
                     this.flying = true;
 
-                    this.self.play(0, false, this._isFat ? this._STATUS_FAT_FLY : this._STATUS_FLY );
+                    this.self.play(0, false, this._isFat ? this._STATUS_FAT_FLY : this._STATUS_FLY);
                     break;
             }
         }
 
-        _proto.love = function(){
-            this._isLove = true;
-
-            this.loveIcon.x = this.self.x - TUTU_LOVE_WIDTH;
-            this.loveIcon.y = this.self.y;
-
-            this.loveIcon.play(0, false, TUTU_LOVE_ANI);
+        _proto.love = function () {
+            this.loveIcon.loadAnimation(TUTU_LOVE_ANI);
+            this.loveIcon.play(0, false);
         }
 
         _proto._move = function () {
+
+
             //跳起和下落有重力
             if (this.jumping || this.falling) {
                 this.speed = this.speed + TUTU_FALL_G;
-                this.self.y += -this.speed;
+
+                if (this.self.y >= SCREEN_HEIGHT / 2 - TUTU_HEIGHT / 2 || this.falling ) {
+                    this.self.y += -this.speed;
+                }
+
+
             } else if (this.flying) {
                 //跟随灯笼飞行
                 this.speed = LANTERN_SPEED;
@@ -212,6 +212,18 @@
             if (this.distance + this.speed > this.distance) {
                 this.distance += this.speed;
             }
+
+            //桃心跟随兔子移动
+            this.loveIcon.x = this.self.x - TUTU_LOVE_WIDTH;
+            this.loveIcon.y = this.self.y - TUTU_LOVE_HEIGHT;
+
+
+            if (this.self.y >= SCREEN_HEIGHT / 2  - TUTU_HEIGHT / 2 || this.falling) {
+                return 0;
+            } else {
+                return this.speed;
+            }
+
         }
 
         //控制tutu横向移动

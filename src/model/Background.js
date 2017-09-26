@@ -6,7 +6,7 @@
 
         this.first = null;
         this.second = null;
-        this.speed = GAME_SPEED;
+        //this.speed = GAME_SPEED;
         this.backgroundIndex = 0;
 
         _proto.init = function (){
@@ -14,13 +14,13 @@
             
             this.first = new Laya.Sprite();
             //加载显示图片，坐标位于
-            this.first.loadImage(BACKGROUND_IMAGES[this.backgroundIndex++], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            this.first.loadImage(BACKGROUND_IMAGES[this.backgroundIndex++], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 20);
             //添加到舞台
             Laya.stage.addChild(this.first);
 
             this.second = new Laya.Sprite();
             //加载显示图片，坐标位于
-            this.second.loadImage(BACKGROUND_IMAGES[this.backgroundIndex++], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            this.second.loadImage(BACKGROUND_IMAGES[this.backgroundIndex++], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT  + 20);
             this.second.y = -SCREEN_HEIGHT;
             //添加到舞台
             Laya.stage.addChild(this.second);
@@ -38,8 +38,8 @@
                 return;
             }
 
-            this.first.y += this.speed
-            this.second.y += this.speed
+            this.first.y += GAME_SPEED;
+            this.second.y += GAME_SPEED;
 
             if(this.first.y >= SCREEN_HEIGHT){
                 this.first.y = -SCREEN_HEIGHT;
@@ -52,7 +52,7 @@
                     index = this.backgroundIndex++
                 }
 
-                this.first.loadImage(BACKGROUND_IMAGES[index], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+                this.first.loadImage(BACKGROUND_IMAGES[index], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 20)
             }
 
             if(this.second.y >= SCREEN_HEIGHT){
@@ -66,7 +66,7 @@
                     index = this.backgroundIndex++
                 }
 
-                this.second.loadImage(BACKGROUND_IMAGES[index], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+                this.second.loadImage(BACKGROUND_IMAGES[index], 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 20)
             }
         }
 

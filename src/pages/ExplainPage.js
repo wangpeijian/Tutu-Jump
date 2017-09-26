@@ -7,7 +7,7 @@
         _proto.init = function (nextPage) {
             var img = new Laya.Sprite();
             //加载显示图片，坐标位于
-            img.loadImage(EXPLAIN_PAGE_BACKGROUND, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            img.loadImage($helper.isYunFamily() ? EXPLAIN_PAGE_BACKGROUND_YUN : EXPLAIN_PAGE_BACKGROUND_WX, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
             img.size(SCREEN_WIDTH, SCREEN_HEIGHT);
             //添加到舞台
             Laya.stage.addChild(img);
