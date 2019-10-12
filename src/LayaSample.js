@@ -18,7 +18,7 @@
 		//Laya.Stat.show(0,-200);
 	}
 
-	function systenRun() {
+	function systemRun() {
 		var text = new Laya.Text();
 		        text.fontSize = 40;
 		        text.color = "#FF00FF";
@@ -27,7 +27,8 @@
 		        text.pos(600, 600);
 		        Laya.stage.addChild(text);
 
-		OBJECT_COVER_PAGE.init($helper.isYunFamily() ? createFormPage : createExplainPage);
+		// OBJECT_COVER_PAGE.init($helper.isYunFamily() ? createFormPage : createExplainPage);
+		OBJECT_EXPLAIN_PAGE.init(createEngine);
 
 		//创建表单页面
 		function createFormPage() {
@@ -137,10 +138,10 @@
 	});
 
 	//保存客户信息
-	$helper.getUserInfo()
+	// $helper.getUserInfo()
 
 	initSystem();
-	initWechat();
+	// initWechat();
 
 	window.Special_Effects_Lantern = null;
 	Laya.loader.load("flyagain.part", laya.utils.Handler.create(this, function (setting) {
@@ -148,5 +149,5 @@
 		Special_Effects_Lantern.emitter.start();
 	}));
 
-	Laya.loader.load(asset, laya.utils.Handler.create(this, systenRun));
+	Laya.loader.load(asset, laya.utils.Handler.create(this, systemRun));
 })()
